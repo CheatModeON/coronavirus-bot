@@ -7,7 +7,7 @@ import threading
 import json
 from flask import Flask
 
-#app = Flask(__name__)
+app = Flask(__name__)
 
 #headers = {'Content-Type': 'application/json'}
 
@@ -69,6 +69,10 @@ def run_check():
     else:
         return None
     
+@app.route('/')
+def bot():
+    return redirect("https://t.me/s/coronavirusingreece", code=302)
+
 if __name__ == '__main__':
+    app.run()
     run_check()
-    #app.run()
