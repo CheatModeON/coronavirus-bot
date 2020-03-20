@@ -5,6 +5,9 @@ import requests
 import sched, time
 import threading
 import json
+from flask import Flask
+
+#app = Flask(__name__)
 
 #headers = {'Content-Type': 'application/json'}
 
@@ -66,5 +69,6 @@ def run_check():
     else:
         return None
     
- 
-run_check()
+if __name__ == '__main__':
+    run_check()
+    #app.run()
