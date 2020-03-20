@@ -5,22 +5,12 @@ import requests
 import sched, time
 import threading
 import json
-#from flask import Flask
-#from flask import Flask,redirect
-
-#app = Flask(__name__)
 
 #headers = {'Content-Type': 'application/json'}
 
 greece = {"country":"Greece","total_cases":"0","active_cases":"0","new_cases":"0","total_recovered":"0","serious_cases":"0","total_deaths":"0","new_deaths":"0","total_cases_per_mil":"0"}
 
-
-#@app.route('/')
-#def bot():
-#    return redirect("https://t.me/s/coronavirusingreece", code=302)
-
 if __name__ == '__main__':
- #   app.run(host='0.0.0.0', port=5000)
     run_check()
 
 
