@@ -14,7 +14,7 @@ def bot_send_message(message):
  
 def run_check():
     threading.Timer(60, run_check).start()
-    response = reqiests.get("https://coron-api.azurewebsites.net/api/v1/stats?country=Greece")
+    response = requests.get("https://coron-api.azurewebsites.net/api/v1/stats?country=Greece")
     if response.status_code == 200:
         test = json.loads(response.content.decode('utf-8'))
       
