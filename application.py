@@ -69,7 +69,7 @@ def run_check():
     else:
         return None
     
-app.route('/')
+@app.route('/')
 def bot():
     return redirect("https://t.me/s/coronavirusingreece", code=302)
 
