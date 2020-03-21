@@ -86,7 +86,7 @@ def run_check():
             else:
                 new_deaths_string = greece['new_deaths'].encode("utf-8")
                 
-            new_deaths_string = "%0AΚρούσματα ανά 1.000.000 πλυθησμού: "
+            total_cases_per_mil_string = "%0AΚρούσματα ανά 1.000.000 πλυθησμού: "
             if(greece['total_cases_per_mil'] != json_res['total_cases_per_mil'] and json_res['total_cases_per_mil'] != "No Data"):
                 total_cases_per_mil_string += json_res['total_cases_per_mil'].encode("utf-8")
                 total_cases_per_mil_string += " [NEO]"
