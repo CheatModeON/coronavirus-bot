@@ -38,56 +38,56 @@ def run_check():
             
             
             total_cases_string = "%0AΣυνολικά κρούσματα: "
-            if(greece['total_cases'] != json_res['total_cases'] && json_res['total_cases'] != "No Data"):
+            if(greece['total_cases'] != json_res['total_cases'] and json_res['total_cases'] != "No Data"):
                 total_cases_string += json_res['total_cases'].encode("utf-8")
                 total_cases_string += " [NEO]"
             else:
                 total_cases_string += greece['total_cases'].encode("utf-8")
                 
             active_cases_string = "%0AΕνεργά κρούσματα: "
-            if(greece['active_cases'] != json_res['active_cases'] && json_res['active_cases'] != "No Data"):
+            if(greece['active_cases'] != json_res['active_cases'] and json_res['active_cases'] != "No Data"):
                 active_cases_string += json_res['active_cases'].encode("utf-8")
                 active_cases_string += " [NEO]"
             else:
                 active_cases_string = greece['active_cases'].encode("utf-8")
                 
             new_cases_string = "%0AΝέα κρούσματα: "
-            if(greece['new_cases'] != json_res['new_cases'] && json_res['new_cases'] != "No Data"):
+            if(greece['new_cases'] != json_res['new_cases'] and json_res['new_cases'] != "No Data"):
                 new_cases_string += json_res['new_cases'].encode("utf-8")
                 new_cases_string += " [NEO]"
             else:
                 new_cases_string = greece['new_cases'].encode("utf-8")
                 
             total_recovered_string = "%0AΈχουν αναρρώσει: "
-            if(greece['total_recovered'] != json_res['total_recovered'] && json_res['total_recovered'] != "No Data"):
+            if(greece['total_recovered'] != json_res['total_recovered'] and json_res['total_recovered'] != "No Data"):
                 total_recovered_string += json_res['total_recovered'].encode("utf-8")
                 total_recovered_string += " [NEO]"
             else:
                 total_recovered_string = greece['total_recovered'].encode("utf-8")
                 
             serious_cases_string = "%0AΣοβαρά περιστατικά: "
-            if(greece['serious_cases'] != json_res['serious_cases'] && json_res['serious_cases'] != "No Data"):
+            if(greece['serious_cases'] != json_res['serious_cases'] and json_res['serious_cases'] != "No Data"):
                 serious_cases_string += json_res['serious_cases'].encode("utf-8")
                 serious_cases_string += " [NEO]"
             else:
                 serious_cases_string = greece['serious_cases'].encode("utf-8")
                 
             total_deaths_string = "%0AΣυνολικοί θάνατοι: "
-            if(greece['total_deaths'] != json_res['total_deaths'] && json_res['total_deaths'] != "No Data"):
+            if(greece['total_deaths'] != json_res['total_deaths'] and json_res['total_deaths'] != "No Data"):
                 total_deaths_string += json_res['total_deaths'].encode("utf-8")
                 total_deaths_string += " [NEO]"
             else:
                 total_deaths_string = greece['total_deaths'].encode("utf-8")
                 
             new_deaths_string = "%0AΝέοι θάνατοι: "
-            if(greece['new_deaths'] != json_res['new_deaths'] && json_res['new_deaths'] != "No Data"):
+            if(greece['new_deaths'] != json_res['new_deaths'] and json_res['new_deaths'] != "No Data"):
                 new_deaths_string += json_res['new_deaths'].encode("utf-8")
                 new_deaths_string += " [NEO]"
             else:
                 new_deaths_string = greece['new_deaths'].encode("utf-8")
                 
             new_deaths_string = "%0AΚρούσματα ανά 1.000.000 πλυθησμού: "
-            if(greece['total_cases_per_mil'] != json_res['total_cases_per_mil'] && json_res['total_cases_per_mil'] != "No Data"):
+            if(greece['total_cases_per_mil'] != json_res['total_cases_per_mil'] and json_res['total_cases_per_mil'] != "No Data"):
                 total_cases_per_mil_string += json_res['total_cases_per_mil'].encode("utf-8")
                 total_cases_per_mil_string += " [NEO]"
             else:
