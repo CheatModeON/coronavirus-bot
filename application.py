@@ -5,18 +5,19 @@ import requests
 import sched, time
 import threading
 import json
+import datetime
 
 #headers = {'Content-Type': 'application/json'}
 
 greece = {
-    "active_cases": "498", 
+    "active_cases": "589", 
   "country": "Greece", 
-  "new_cases": "+35", 
-  "new_deaths": "+3", 
-  "serious_cases": "15", 
-  "total_cases": "530", 
-  "total_cases_per_mil": "51", 
-  "total_deaths": "13", 
+  "new_cases": "+49", 
+  "new_deaths": "+1", 
+  "serious_cases": "18", 
+  "total_cases": "623", 
+  "total_cases_per_mil": "55", 
+  "total_deaths": "14", 
   "total_recovered": "19"
 }
 
@@ -48,45 +49,63 @@ def run_check():
             
             total_cases_string = "%0AΣυνολικά κρούσματα: "
             total_cases_string += json_res['total_cases'].encode("utf-8")
-            if(greece['total_cases'] != json_res['total_cases'] and json_res['total_cases'] != "No Data"):
-                total_cases_string += " [NEO]"
+            if(greece['total_cases'] < json_res['total_cases'] and json_res['total_cases'] != "0"):
+                total_cases_string += " 📈"
+            elif(greece['total_cases'] > json_res['total_cases'] and json_res['total_cases'] != "0"):
+                total_cases_string += " 📉"
                 
             active_cases_string = "%0AΕνεργά κρούσματα: "
             active_cases_string += json_res['active_cases'].encode("utf-8")
-            if(greece['active_cases'] != json_res['active_cases'] and json_res['active_cases'] != "No Data"):
-                active_cases_string += " [NEO]"
+            if(greece['active_cases'] < json_res['active_cases'] and json_res['active_cases'] != "0"):
+                active_cases_string += " 📈"
+            elif(greece['active_cases'] > json_res['active_cases'] and json_res['active_cases'] != "0"):
+                active_cases_string += " 📉"
                 
             new_cases_string = "%0AΝέα κρούσματα: "
             new_cases_string += json_res['new_cases'].encode("utf-8")
-            if(greece['new_cases'] != json_res['new_cases'] and json_res['new_cases'] != "No Data"):
-                new_cases_string += " [NEO]"
+            if(greece['new_cases'] < json_res['new_cases'] and json_res['new_cases'] != "0"):
+                new_cases_string += " 📈"
+            elif(greece['new_cases'] > json_res['new_cases'] and json_res['new_cases'] != "0"):
+                new_cases_string += " 📉"
                 
             total_recovered_string = "%0AΈχουν αναρρώσει: "
             total_recovered_string += json_res['total_recovered'].encode("utf-8")
-            if(greece['total_recovered'] != json_res['total_recovered'] and json_res['total_recovered'] != "No Data"):
-                total_recovered_string += " [NEO]"
+            if(greece['total_recovered'] < json_res['total_recovered'] and json_res['total_recovered'] != "0"):
+                total_recovered_string += " 📈"
+            elif(greece['total_recovered'] > json_res['total_recovered'] and json_res['total_recovered'] != "0"):
+                total_recovered_string += " 📉"
                 
             serious_cases_string = "%0AΣοβαρά περιστατικά: "
             serious_cases_string += json_res['serious_cases'].encode("utf-8")
-            if(greece['serious_cases'] != json_res['serious_cases'] and json_res['serious_cases'] != "No Data"):
-                serious_cases_string += " [NEO]"
+            if(greece['serious_cases'] < json_res['serious_cases'] and json_res['serious_cases'] != "0"):
+                serious_cases_string += " 📈"
+            elif(greece['serious_cases'] > json_res['serious_cases'] and json_res['serious_cases'] != "0"):
+                serious_cases_string += " 📉"
                 
             total_deaths_string = "%0AΣυνολικοί θάνατοι: "
             total_deaths_string += json_res['total_deaths'].encode("utf-8")
-            if(greece['total_deaths'] != json_res['total_deaths'] and json_res['total_deaths'] != "No Data"):
-                total_deaths_string += " [NEO]"
+            if(greece['total_deaths'] < json_res['total_deaths'] and json_res['total_deaths'] != "0"):
+                total_deaths_string += " 📈"
+            elif(greece['total_deaths'] > json_res['total_deaths'] and json_res['total_deaths'] != "0"):
+                total_deaths_string += " 📉"
                 
             new_deaths_string = "%0AΝέοι θάνατοι: "
             new_deaths_string += json_res['new_deaths'].encode("utf-8")
-            if(greece['new_deaths'] != json_res['new_deaths'] and json_res['new_deaths'] != "No Data"):
-                new_deaths_string += " [NEO]"
+            if(greece['new_deaths'] < json_res['new_deaths'] and json_res['new_deaths'] != "0"):
+                new_deaths_string += " 📈"
+            elif(greece['new_deaths'] > json_res['new_deaths'] and json_res['new_deaths'] != "0"):
+                new_deaths_string += " 📉"
                 
             total_cases_per_mil_string = "%0AΚρούσματα ανά 1.000.000 πλυθησμού: "
             total_cases_per_mil_string += json_res['total_cases_per_mil'].encode("utf-8")
-            if(greece['total_cases_per_mil'] != json_res['total_cases_per_mil'] and json_res['total_cases_per_mil'] != "No Data"):
-                total_cases_per_mil_string += " [NEO]"
+            if(greece['total_cases_per_mil'] < json_res['total_cases_per_mil'] and json_res['total_cases_per_mil'] != "0"):
+                total_cases_per_mil_string += " 📈"
+            elif(greece['total_cases_per_mil'] > json_res['total_cases_per_mil'] and json_res['total_cases_per_mil'] != "0"):
+                total_cases_per_mil_string += " 📉"
                 
-            string = "Έκτακτη Ενημέρωση"
+            x = datetime.datetime.now()
+            
+            string = "Νέα Ενημέρωση " + x.strftime("%d/%m/%Y %H:%M:%S")
             string += total_cases_string
             string += active_cases_string
             string += new_cases_string
