@@ -28,10 +28,24 @@ def bot_send_message(message):
     result = response["result"]
     message_id = result["message_id"]
     return message_id
- 
+
+def init(): # one time set current values
+    response = requests.get("https://coron-api.azurewebsites.net/api/v1/stats?country=Greece")
+    if response.status_code == 200:
+        json_res = json.loads(response.content.decode('utf-8'))
+        
+        greece["total_cases"] = json_res["total_cases"]
+        greece["active_cases"] = json_res["active_cases"]
+        greece["new_cases"] = json_res["new_cases"]
+        greece["total_recovered"] = json_res["total_recovered"]
+        greece["serious_cases"] = json_res["serious_cases"]
+        greece["total_deaths"] = json_res["total_deaths"]
+        greece["new_deaths"] = json_res["new_deaths"]
+        greece["total_cases_per_mil"] = json_res["total_cases_per_mil"]
+        
 def run_check():
 
-    threading.Timer(60, run_check).start()
+    threading.Timer(300, run_check).start() # every 5min check for updates
     response = requests.get("https://coron-api.azurewebsites.net/api/v1/stats?country=Greece")
     if response.status_code == 200:
         json_res = json.loads(response.content.decode('utf-8'))
@@ -45,7 +59,8 @@ def run_check():
         new_deaths = json_res["new_deaths"]
         total_cases_per_mil = json_res["total_cases_per_mil"]
         
-        if(sorted(greece.items()) != sorted(json_res.items())):
+        #if(sorted(greece.items()) != sorted(json_res.items())):
+        if(greece["total_cases"] != total_cases or greece["active_cases"] != active_cases or greece["total_recovered"] != total_recovered or greece["tota_deaths"] != total_deaths or greece["serious_cases"] != serious_cases or greece["total_cases_per_mil"] != total_cases_per_mil or (greece["new_cases"] != new_cases and greece["new_cases"] != "0")  or (greece["new_deaths"] != new_deaths and greece["new_deaths"] != "0")):
             
             total_cases_string = "%0AΣυνολικά κρούσματα: "
             total_cases_string += json_res['total_cases'].encode("utf-8")
@@ -131,5 +146,6 @@ def run_check():
     
     
 if __name__ == '__main__':
+    init()
     run_check()
 
