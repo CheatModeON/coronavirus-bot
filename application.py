@@ -60,7 +60,7 @@ def run_check():
         total_cases_per_mil = json_res["total_cases_per_mil"]
         
         #if(sorted(greece.items()) != sorted(json_res.items())):
-        if(greece["total_cases"] != total_cases or greece["active_cases"] != active_cases or greece["total_recovered"] != total_recovered or greece["total_deaths"] != total_deaths or greece["serious_cases"] != serious_cases or greece["total_cases_per_mil"] != total_cases_per_mil or (greece["new_cases"] != new_cases and greece["new_cases"] != "0")  or (greece["new_deaths"] != new_deaths and greece["new_deaths"] != "0")):
+        if(greece["total_cases"] != total_cases or greece["active_cases"] != active_cases or greece["total_recovered"] != total_recovered or greece["total_deaths"] != total_deaths or greece["serious_cases"] != serious_cases or greece["total_cases_per_mil"] != total_cases_per_mil or (greece["new_cases"] != new_cases and new_cases != "0")  or (greece["new_deaths"] != new_deaths and new_deaths != "0")):
             
             total_cases_string = "%0AΣυνολικά κρούσματα: "
             total_cases_string += json_res['total_cases'].encode("utf-8")
@@ -130,6 +130,7 @@ def run_check():
             string += new_deaths_string
             string += total_cases_per_mil_string
             print(string)
+            
             bot_send_message(string)
             
             greece['total_cases'] = json_res['total_cases']
